@@ -1,0 +1,130 @@
+61. Write a class FifoQueue (fifo stands for first in first out)
+    - with an attribute q -> the container of your choice
+    - with a method push that inserts an element at the back of the queue q
+    - with a method pop that pops and returns the element at the front of the queue q
+
+
+62. Write a class Stack (a stack is just a lifo queue where lifo stands for last in first out)
+    - with an attribute s -> the container of your choice
+    - with a method push that inserts elements at the front of the queue
+    - with a method pop that pops and return the element at the front of the queue
+
+63 (HARDER). Try doing 61. without using pop(0). Hint: you can use 2 lists
+
+
+64. Write a classe Circle
+    - with an attribute "radius"
+    - a method "perimeter" that returns the perimeter of the circle
+    - a method "area" that returns the area of the cicle
+
+
+65. Write a class Animal
+    - with an attribute speach, inititalize it to an empty string inside the constructor
+    - with a method speak that returns the animal's speach attribute
+
+66. Write a class Dog that inherits from Animal and implements its own method speach
+
+NOTE: a Dog "barks"
+
+67. Write a class Tiger that inherits from Animal and implements its own method speach
+
+NOTE: a Tiger "roar"
+
+68. Write a class Rectangle
+    - with an attribute length
+    - with an attribute width
+    - with a method perimeter
+    - with a method area
+
+
+69. Write a class Square that inherits from Rectangle and verifies that length == width
+
+70. Write a class Car
+    - with an attribute "brand"
+    - with an attribute "fuel"
+    - a method "drive"
+        - Everytime the method drive is called the car instance consumes 1 unit of fuel
+        - raise an Exception if you attempt to drive with no fuel in the car
+    - implement the operator __str__ and return the brand of the car and how much fuel is in the tank
+
+Test:
+
+i) Create an instance of Car with 2 units of fuel
+ii) call the drive method 3 times -> Does an Exception  get raised ?
+iii) print your instance on screen -> Do you see the expected output from your __str__ implementation ?
+
+
+71. Write a class named BlackScholesVanilla
+
+with the following attributes:
+    - Type:   option's type (1 for call or -1 for put)
+    - Pos:    option's position (1 for long -1 for short)
+    - S:      option's underlying price
+    - K:      option's strike price
+    - r:      risk free rate
+    - q:      dividend yield
+    - T:      time to expiry between in [0, 1] (eg. 36 days to exp -> 36 / 365 ~= 0.1)
+    - sigmaT: volatility scaled by time left to expiry (eg. 20% annual vol with 36 days to exp -> ~0.1 * 20% = 2% vol)
+
+with the following methods:
+    - theta
+    - delta
+    - vega
+    - gamma
+    - premium
+
+
+72. Write a class named Portfolio with a container (eg. a list) for BlackSholesVanilla objects and the following methods:
+    - theta
+    - delta
+    - vega
+    - gamma
+    - premium
+
+NOTE: the above greek methods are meant to compute the values at the portfolio level
+      For example if I am long a 0.5 delta call and long a -0.5 delta put, the delta method from the Portfolio class should return a net delta of 0
+
+
+73. Write a class LimitOrder
+
+with the following attributes:
+    - price: order price (float value)
+    - size:  order size (float value)
+    - side:  1 for buy -1 for sell
+
+Implement with the following ordering operators:
+    - __lt__
+    - __le__
+    - __gt__
+    - __ge__
+
+Eg. That way expression like LimitOrder(10, 2, 1) < LimitOrder(11, 34, 1) makes sense (is True in this case) 
+
+
+74. Write a class named OrderBook
+
+with the following attributes:
+    - bids, where bids is a decreasing list of buy LimitOrder objects
+    - asks, where asks is an increasing list of sell LimitOrder objects
+
+with the following methods:
+    - add_bid_order
+    - remove_bid_order
+    - add_ask_order
+    - remove_ask_order
+    - best_bid_price
+    - best_ask_price
+    - spread := best ask - best bid
+
+OPTIONAL: If you're familiar with a heap data structure you may use Python's heapq module on top of your lists
+
+Test:
+
+i) Create an instance of your OrderBook class
+ii) Add a bid price 10 size 8
+iii) Add a bid price 11 size 86
+iv) Add an ask price 13 size 35
+v) Add an ask price 15 size 38
+vi) Display best bid, best ask, spread -> results should be 11, 13, 2
+vii) remove bid at price 11
+viii) Display best bid, best ask, spread -> results should be 10, 13, 3
