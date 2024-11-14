@@ -10,14 +10,17 @@ SYMBOL = "BTCUSDT"
 LIMIT = 1000  # Use max depth for snapshot
 
 
-# Implement an OrderBook class
-# - the classe should listen to real time data from BinanceSpotMarketDataStream and update the orderbook
-#     - bids are sorted from highest to lowest
-#     - asks are sorted from lowest to highest
+class OrderBook:
+    # Implement an OrderBook class
+    # - the classe should listen to real time data from BinanceSpotMarketDataStream and update the orderbook
+    #     - bids are sorted from highest to lowest
+    #     - asks are sorted from lowest to highest
 
-# - the orderbook should be able to calculate the best bid and ask
-# - the orderbook should be able to calculate the spread
-# - the orderbook should be able to calculate the mid price
+    # - the orderbook should be able to calculate the best bid and ask
+    # - the orderbook should be able to calculate the spread
+    # - the orderbook should be able to calculate the mid price
+    pass
+
 
 class BinanceSpotMarketDataStream:
     def __init__(self, symbol, orderbook, limit=LIMIT):
